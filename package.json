@@ -1,0 +1,23 @@
+{
+  "name": "bamazon-unit12",
+  "version": "1.0.0",
+  "description": "This app uses a CLI to provide a stripped-down online storefront. (The app relies on MySQL, Node.Js, and Javascript).",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidmbedford/bamazon-unit12.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidmbedford/bamazon-unit12/issues"
+  },
+  "homepage": "https://github.com/davidmbedford/bamazon-unit12#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "mysql": "^2.17.1"
+  }
+}
