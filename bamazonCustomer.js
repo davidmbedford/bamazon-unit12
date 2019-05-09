@@ -14,7 +14,8 @@ let connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
-  console.log("Hello! Its working.");
+  console.log("Hello! Welcome to Bamazon");
+  console.log('\n===================\n');
   beginApp();
 });
 
@@ -24,6 +25,8 @@ let query = "SELECT id, product_name, price, stock_quantity  FROM products";
     for (var i = 0; i < res.length; i++) {
       console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
       };
+
+      console.log('\n===================\n');
 
       inquirer
       .prompt ([
@@ -43,18 +46,19 @@ let query = "SELECT id, product_name, price, stock_quantity  FROM products";
         console.log(response.quantity);
         let inStock = res[response.item - 1].stock_quantity;
         console.log(inStock);
+        let price = res[response.item - 1].price;
+        console.log(price);
 
         if (response.quantity > inStock) {
-        console.log("Insuffecient quantity! We only have " + inStock + " in stock. Sorry for the inconvenience, please try again!");
-        beginApp();
+          console.log("Insuffecient quantity! We only have " + inStock + " in stock. Sorry for the inconvenience, please try again!");
+          console.log('\n===================\n');
+          beginApp();
         }
         else if (inStock >= response.quantity) {
-
+          console.log("The total cost of your purchase is " + (price * response.quantity));
+          console.log('\n===================\n');
+          beginApp();
         }
-        //// buy
-        // else
-        //// insuffecient quantity
-        //////try again
       });
     })
   }
