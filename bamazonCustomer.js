@@ -41,11 +41,15 @@ let query = "SELECT id, product_name, price, stock_quantity  FROM products";
       .then(function(response) {
         console.log(response.item);
         console.log(response.quantity);
-        let inStock = res[response.item - 1].stock_qunatity);
+        let inStock = res[response.item - 1].stock_quantity;
+        console.log(inStock);
 
         if (response.quantity > inStock) {
         console.log("Insuffecient quantity! We only have " + inStock + " in stock. Sorry for the inconvenience, please try again!");
         beginApp();
+        }
+        else if (inStock >= response.quantity) {
+
         }
         //// buy
         // else
