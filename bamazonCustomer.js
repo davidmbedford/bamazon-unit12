@@ -17,14 +17,20 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
   if (err) throw err;
   console.log("Hello! Its working.");
+  beginApp();
 });
 
-// let queryInitial = "SELECT position, song, year FROM top5000 WHERE ?";
-//   connection.query(queryInitial, { }, function(err, res) {
-//     for (var i = 0; i < res.length; i++) {
-//       console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Price: " + res[i].price);
-//       };
-//     })
+function beginApp() {
+let query = "SELECT id, product_name, price FROM products";
+console.log(query);
+  connection.query(query, function(err, res) {
+    console.log(res);
+    for (var i = 0; i < res.length; i++) {
+      console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Price: " + res[i].price);
+      };
+    })
+  }
+
 
 // inquirer
 //   .prompt ([
