@@ -54,5 +54,5 @@ VALUES ("Yamaha TRBX174 Bass Essentials Pack, Cherry Red", "Basses", "219.99", 4
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Yamaha TRBX174 Bass Essentials Pack, Maple", "Basses", "219.99", 7);
 
-select * from products;
+SELECT * FROM products;
 
