@@ -43,34 +43,42 @@ inquirer
     } else if (command === 'Add New Product') {
       addProduct();
     }
-    console.log('=========================================\n');
     beginManager();
     });
 
   const viewInventory = function () {
+    console.log('\n=========================================');
     console.log('This viewInventory is working!');
     console.log('=========================================\n');
 
     let query = "SELECT id, product_name, price, stock_quantity FROM products";
     connection.query(query, function(err, res) {
+      console.log('\n=========================================');
       for (var i = 0; i < res.length; i++) {
         console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
       };
-    });
+      console.log('=========================================\n');
+    })
   };
 
   const viewLowInventory = function () {
+    console.log('\n=========================================');
     console.log('This viewLow  is working!');
+    console.log('=========================================\n');
     //beginManager();
   };
 
   const addInventory = function () {
+    console.log('\n=========================================');
     console.log('This addInventory is working!');
+    console.log('=========================================\n');
     //beginManager();
   };
 
   const addProduct = function () {
+    console.log('\n=========================================');
     console.log('This addProduct is working!');
+    console.log('=========================================\n');
     //beginManager();
   };
 }
