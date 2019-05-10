@@ -1,8 +1,6 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql');
 
-let inStock = "";
-
 let connection = mysql.createConnection({
   host: "localhost",
 
@@ -78,11 +76,3 @@ function beginApp() {
       });
     })
   }
-
-  // function newPurchase() {
-  //   let newAmt = inStock - userAmt;
-  //   let update = "UPDATE products SET stock_quantity = " + newAmt + " WHERE id = " + (product - 1);
-  //   connection.query(update, function(err, res) {
-  //     console.log(newAmt + " left in stock");
-  //   })
-  // }
