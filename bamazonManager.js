@@ -48,14 +48,14 @@ inquirer
 
   const viewInventory = function () {
     console.log('\n=========================================');
-    console.log('This viewInventory is working!');
+    console.log('Here is what you have in stock!');
     console.log('=========================================\n');
 
-    let query = "SELECT id, product_name, price, stock_quantity FROM products";
+    let query = "SELECT id, product_name, price, department_name, stock_quantity FROM products";
     connection.query(query, function(err, res) {
       console.log('\n=========================================');
       for (var i = 0; i < res.length; i++) {
-        console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
+        console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Dept Name: " + res[i].department_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
       };
       console.log('=========================================\n');
 
@@ -65,15 +65,15 @@ inquirer
 
   const viewLowInventory = function () {
     console.log('\n=========================================');
-    console.log('This viewLow  is working!');
+    console.log('Here is what you are running low on! Everything listed has a stock quantity at or below 5 units.');
     console.log('=========================================\n');
 
-    let query = "SELECT id, product_name, price, stock_quantity FROM products";
+    let query = "SELECT id, product_name, price, department_name, stock_quantity FROM products";
     connection.query(query, function(err, res) {
       console.log('\n=========================================');
       for (var i = 0; i < res.length; i++) {
         if (res[i].stock_quantity <= 5) {
-          console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
+          console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Dept Name: " + res[i].department_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
         }
       };
       console.log('=========================================\n');
@@ -84,13 +84,13 @@ inquirer
 
   const addInventory = function () {
     console.log('\n=========================================');
-    console.log('This addInventory is working!');
+    console.log('Seems like you got a new shipment!');
     console.log('=========================================\n');
 
-    let query = "SELECT id, product_name, price, stock_quantity FROM products";
+    let query = "SELECT id, product_name, department_name, price, stock_quantity FROM products";
     connection.query(query, function(err, res) {
       for (var i = 0; i < res.length; i++) {
-        console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
+        console.log("ID: " + res[i].id + " || Product: " + res[i].product_name + " || Dept Name: " + res[i].department_name + " || Price: " + res[i].price + " || In-Stock: " + res[i].stock_quantity);
         };
 
       console.log('\n===================\n');
@@ -133,10 +133,8 @@ inquirer
 
   const addProduct = function () {
     console.log('\n=========================================');
-    console.log('This addProduct is working!');
+    console.log('Whats new in stock, doc?');
     console.log('=========================================\n');
-
-    let query = "INSERT INTO products(product_name, department_name, price, stock_quantity) VALUES (x, y, z, a)";
 
     inquirer
     .prompt ([
@@ -167,8 +165,19 @@ inquirer
       console.log(response.price);
       console.log(response.stockQuantity);
 
-      beginManager();
-
-    })
+      let query = connection.query(
+        "INSERT INTO products SET ?",
+        {
+          product_name: response.productName,
+          department_name: response.departmentName,
+          price: response.price,
+          stock_quantity: response.stockQuantity
+        },
+        function(err, res) {
+          console.log(res.affectedRows + " product inserted!\n");
+          // Call updateProduct AFTER the INSERT completes
+          beginManager();
+        });
+      })
 
   };
