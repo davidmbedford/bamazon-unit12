@@ -135,5 +135,40 @@ inquirer
     console.log('\n=========================================');
     console.log('This addProduct is working!');
     console.log('=========================================\n');
-    beginManager();
+
+    let query = "INSERT INTO products(product_name, department_name, price, stock_quantity) VALUES (x, y, z, a)";
+
+    inquirer
+    .prompt ([
+      {
+        name: "productName",
+        type: "input",
+        message: "What item would you like to add to inventory? Enter product name: "
+      },
+      {
+        name: "departmentName",
+        type: "input",
+        message: "Where should this product be added? Enter department name: "
+      },
+      {
+        name: "price",
+        type: "input",
+        message: "What is the price of this product? Enter price: "
+      },
+      {
+        name: "stockQuantity",
+        type: "input",
+        message: "How many would you like to add? Enter stock quantity: "
+      }
+    ])
+    .then(function(response) {
+      console.log(response.productName);
+      console.log(response.departmentName);
+      console.log(response.price);
+      console.log(response.stockQuantity);
+
+      beginManager();
+
+    })
+
   };
