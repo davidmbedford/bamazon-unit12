@@ -18,7 +18,7 @@ This app has two components:
    
    Video: https://www.youtube.com/watch?v=Hh5dcEebi-0&feature=youtu.be
 
-##### How it works
+### How it works
 This app uses Node.js technology to run in the command line. For my project - and all others - I use Git Bash as my CLI.
 
 Languages/tools:
