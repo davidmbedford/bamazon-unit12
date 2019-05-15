@@ -54,5 +54,10 @@ VALUES ("Yamaha TRBX174 Bass Essentials Pack, Cherry Red", "Basses", "219.99", 4
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Yamaha TRBX174 Bass Essentials Pack, Maple", "Basses", "219.99", 7);
 
+USE bamazon;
 SELECT * FROM products;
+
+delete from products where id >= 19 and id <= 36;
+
+UPDATE products SET stock_quantity = 5 WHERE id = 1;
 
